@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# gradle-mirror
+# shell script to check gradle download page and download all version of gradle
+# (c) Copyright 2014-2015 Muhammad Panji - sumodirjo at gmail dot com / panji at icehousecorp dot com
+# Ice House Systems Engineering
+
+GRADLE_DOWNLOAD_PAGE_URL="https://www.gradle.org/downloads"
+GRADLE_DOWNLOAD_FILE="downloads"
+DOWNLOAD_LIST_FILE=gradle.list
+DOWNLOAD_FOLDER=/home/`whoami`/gradle
+
+if [ ! -d $DOWNLOAD_FOLDER ]; then
+  mkdir $DOWNLOAD_FOLDER
+fi
+
+cd $DOWNLOAD_FOLDER
+
+# Download gradle download page
+echo -e "\e[41;38;5;82m Downloading gradle download page \e[0m"
+wget -c -O $GRADLE_DOWNLOAD_FILE $GRADLE_DOWNLOAD_PAGE_URL
+
+# Parse file get URL to get all versions URL and put them to file
+echo -e "\e[41;38;5;82m Parsing File \e[0m"
+grep zip $GRADLE_DOWNLOAD_FILE | awk -F\" {'print $2'} > $DOWNLOAD_LIST_FILE
+
+# Download All version
+echo -e "\e[41;38;5;82m Downloading all gradle version \e[0m"
+echo "Downloading all gradle version"
+wget -c -i $DOWNLOAD_LIST_FILE
+
+# Cleaning up
+echo -e "\e[41;38;5;82m Cleaning up \e[0m"
+rm -f $GRADLE_DOWNLOAD_FILE $DOWNLOAD_LIST_FILE
+
+echo "Finished"
