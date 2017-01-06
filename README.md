@@ -6,7 +6,7 @@ This script download all version  of Gradle(http://www.gradle.org/downloads)
 * Clone this repository
 
 ```
-$ git clone git@github.com:sumodirjo/gradle-mirror.git
+$ git clone https://github.com/tobiashochguertel/gradle-mirror.git
 ```
 
 * Change the download folder directory
