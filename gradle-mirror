@@ -8,8 +8,7 @@
 GRADLE_DOWNLOAD_PAGE_URL="https://www.gradle.org/downloads"
 GRADLE_DOWNLOAD_FILE="downloads"
 DOWNLOAD_LIST_FILE=gradle.list
-#DOWNLOAD_FOLDER=/home/`whoami`/gradle
-DOWNLOAD_FOLDER="/mnt/docker-volumes/mirror-data/gradle-mirror"
+DOWNLOAD_FOLDER="/mnt/docker-volumes/mirror-data/repositories/services.gradle.org/distributions"
 
 if [ ! -d $DOWNLOAD_FOLDER ]; then
   mkdir $DOWNLOAD_FOLDER
